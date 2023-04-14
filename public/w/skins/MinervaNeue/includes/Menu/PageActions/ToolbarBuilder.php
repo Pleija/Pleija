@@ -21,7 +21,6 @@
 namespace MediaWiki\Minerva\Menu\PageActions;
 
 use ExtensionRegistry;
-use Hooks;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Minerva\LanguagesHelper;
 use MediaWiki\Minerva\Menu\Entries\IMenuEntry;
@@ -167,8 +166,6 @@ class ToolbarBuilder {
 			$group->insertEntry( $this->createContributionsPageAction( $user ) );
 		}
 
-		Hooks::run( 'MobileMenu', [ 'pageactions.toolbar', &$group ], '1.38' );
-
 		// We want the edit icon/action always to be the last element on the toolbar list
 		if ( $permissions->isAllowed( IMinervaPagePermissions::CONTENT_EDIT ) ) {
 			$group->insertEntry( $this->createEditPageAction() );
@@ -193,10 +190,7 @@ class ToolbarBuilder {
 		$entry->setTitle( $label )
 			->trackClicks( 'contributions' )
 			->setIcon( 'userContributions', 'element',
-				// FIXME: mw-ui-icon-minerva-contributions and mw-ui-icon-minerva-userContributions
-				// can be removed after cache has cleared (I6c908acd70c0dca5bcb1754d1b25d3da2389feb8)
-				'mw-ui-icon-with-label-desktop mw-ui-icon-minerva-contributions '
-				. 'mw-ui-icon-minerva-userContributions'
+				'mw-ui-icon-with-label-desktop'
 			);
 
 		return $entry;
@@ -214,7 +208,7 @@ class ToolbarBuilder {
 		$title = $this->title;
 
 		$editArgs = [ 'action' => 'edit' ];
-		if ( $title->isWikitextPage() &&  SkinMinerva::LEAD_SECTION_NUMBER) {
+		if ( $title->isWikitextPage() ) {
 			// If the content model is wikitext we'll default to editing the lead section.
 			// Full wikitext editing is hard on mobile devices.
 			$editArgs['section'] = SkinMinerva::LEAD_SECTION_NUMBER;

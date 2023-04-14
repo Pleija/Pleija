@@ -10,7 +10,8 @@
 			"Siglite3",
 			"Suyama",
 			"Yusuke1109",
-			"ネイ"
+			"ネイ",
+			"春春眠眠"
 		]
 	},
 	"oathauth-desc": "HMAC に基づいたワンタイムパスワードを使用する認証機能を提供する",
@@ -43,6 +44,7 @@
 	"action-oathauth-verify-user": "利用者が二段階認証を有効にしているかどうかの検証",
 	"right-oathauth-view-log": "二段階認証の変更記録を閲覧",
 	"action-oathauth-view-log": "二段階認証の変更記録の閲覧",
+	"oathauth-disable-intro": "大きな力には大きな責任が伴う",
 	"oathauth-enteruser": "利用者名:",
 	"oathauth-enterdisablereason": "無効にする理由:",
 	"oathauth-enterverifyreason": "確認する理由:",
@@ -70,6 +72,7 @@
 	"oathauth-totp-description": "TOTP (Time-based One-Time Password algorithm) は HOTP (HMAC-based One-time Password algorithm) を拡張したアルゴリズムで、現在の時刻からワンタイムパスワードを生成します。",
 	"oathauth-switch-method-warning": "認証方式を$2に切り替えると現在の認証方式（$1）は無効化されます。現在の認証方式に関連付けられているすべてのデータは削除されます。",
 	"oathauth-notifications-disable-help": "ヘルプ",
+	"oathauth-notifications-enabled-help": "ヘルプ",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}}は二要素認証を有効化しています。",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}}は二要素認証を有効化していません。"
 }

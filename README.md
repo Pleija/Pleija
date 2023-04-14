@@ -6,3 +6,6 @@
 
 ### ChangeLog
 - 2022.07.26 部署于 figu.org.cn
+- username: admin 
+- pwd: Hash::make('Pleija520')
+- wiki username: Admin pwd: Pleija7758520+
