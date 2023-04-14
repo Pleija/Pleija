@@ -1,0 +1,13 @@
+{
+    "name": "pacman-mazegen-gh-pages",
+    "version": "1.0.0",
+    "description": "Generating random mazes aesthetically similar to those found in Pac-Man and Ms. Pac-Man. The [tetris](tetris) solution yielded best results:",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "http-server -a localhost -p 8000 -c-1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}

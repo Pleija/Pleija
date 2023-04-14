@@ -1,0 +1,48 @@
+{
+    "name": "Api",
+    "version": "0.0.0",
+    "author": [
+        "FIGU.org.cn"
+    ],
+    "url": "https://figu.org.cn/Extension:Api",
+    "descriptionmsg": "api-desc",
+    "license-name": "MIT",
+    "type": "other",
+    "requires": {
+        "MediaWiki": ">= 1.38.0"
+    },
+    "SpecialPages": {
+        "Api": "App\\Special"
+    },
+    "AutoloadNamespaces": {
+        "App\\": "app/",
+        "Database\\Factories\\": "database/factories/",
+        "Database\\Seeders\\": "database/seeders/"
+    },
+    "MessagesDirs": {
+        "MyExtension": [
+            "i18n"
+        ]
+    },
+    "Hooks.bak": {
+        "GetMagicVariableIDs": "hooks",
+        "PageContentLanguage": "App\\Hooks::onPageContentLanguage"
+    },
+    "Hooks": {
+        "ParserFirstCallInit": "App\\Hooks::onParserFirstCallInit",
+        "BeforeInitialize": "handleHooks"
+    },
+    "HookHandlers": {
+        "handleHooks": {
+            "class": "App\\Hooks",
+            "services": [ "PermissionManager" ]
+        },
+        "hooks": {
+            "class": "App\\Hooks"
+        }
+    },
+    "Actions": {
+        "md": "App\\Actions\\MarkDown"
+    },
+    "manifest_version": 2
+}
