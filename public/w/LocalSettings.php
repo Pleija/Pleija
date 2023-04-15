@@ -30,7 +30,7 @@ $wgMetaNamespace = "Wiki";
 ## For more information on customizing the URLs
 ## (like /w/index.php/Page_title to /wiki/Page_title) please see:
 ## https://www.mediawiki.org/wiki/Manual:Short_URL
-$root = !empty($_SERVER) && $_SERVER['SERVER_NAME'] == "localhost" ? "/pleija" :"";
+$root = !empty($_SERVER) && @$_SERVER['SERVER_NAME'] == "localhost" ? "/pleija" :"";
 $wgScriptPath =  "$root/w";
 
 ## The protocol and server name to use in fully-qualified URLs
@@ -235,17 +235,17 @@ $wgArticlePath = $wgActionPaths['view'];
 
 $wgFavicon = "$root/favicon.ico";
 
-## Shared memory settings
-$wgMainCacheType = CACHE_MEMCACHED;
-$wgMemCachedServers = ["127.0.0.1:11211"];
-
-#$wgMainCacheType = CACHE_MEMCACHED;
-$wgParserCacheType = CACHE_MEMCACHED; # optional
-$wgMessageCacheType = CACHE_MEMCACHED; # optional
-$wgSessionCacheType = CACHE_MEMCACHED; # optional
-$wgSessionsInMemcached = true; # optional
-$wgSessionsInObjectCache = true; # optional
-#$wgMemCachedServers = array("unix:///var/run/memcached/memcached.sock:0");
+//## Shared memory settings
+//$wgMainCacheType = CACHE_MEMCACHED;
+//$wgMemCachedServers = ["127.0.0.1:11211"];
+//
+//#$wgMainCacheType = CACHE_MEMCACHED;
+//$wgParserCacheType = CACHE_MEMCACHED; # optional
+//$wgMessageCacheType = CACHE_MEMCACHED; # optional
+//$wgSessionCacheType = CACHE_MEMCACHED; # optional
+//$wgSessionsInMemcached = true; # optional
+//$wgSessionsInObjectCache = true; # optional
+//#$wgMemCachedServers = array("unix:///var/run/memcached/memcached.sock:0");
 
 $wgUseGzip = true;
 $wgDisableAnonTalk = true;
