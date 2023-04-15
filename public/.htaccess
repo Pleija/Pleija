@@ -10,4 +10,4 @@ RewriteCond %{REQUEST_URI} !-d
 ## Redirect / to Main Page
 RewriteRule ^/*$ /pleija/w/index.php [L,QSA]
 
-RewriteRule ^/?wiki/*(.*)$ /pleija/w/index.php [L,QSA]
+RewriteRule ^/?(wiki|forever)/*(.*)$ /pleija/w/index.php [L,QSA]
