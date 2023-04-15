@@ -247,6 +247,10 @@ $wgFavicon = "$root/favicon.ico";
 //$wgSessionsInObjectCache = true; # optional
 //#$wgMemCachedServers = array("unix:///var/run/memcached/memcached.sock:0");
 
+$wgParserCacheType = CACHE_DB; # optional
+$wgMessageCacheType = CACHE_DB; # optional
+$wgSessionCacheType = CACHE_DB; # optional
+
 $wgUseGzip = true;
 $wgDisableAnonTalk = true;
 $wgCheckFileExtensions = true;
