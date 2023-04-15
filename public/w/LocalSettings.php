@@ -230,4 +230,6 @@ foreach ( $actions as $action ) {
 $wgActionPaths['view'] = "/pleija/{$to}/$1";
 $wgArticlePath = $wgActionPaths['view'];
 
+$wgFavicon = "/pleija/favicon.ico";
+
 
