@@ -220,7 +220,7 @@ wfLoadExtension( 'WikiEditor' );
 # Add more configuration options below.
 
 $wgScriptPath = "$root/w";
-$to = "forever";
+$to = "Forever";
 $wgArticlePath = "$root/{$to}/$1";
 $wgUsePathInfo = true;
 
