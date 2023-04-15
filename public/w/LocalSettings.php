@@ -247,4 +247,42 @@ $wgSessionsInMemcached = true; # optional
 $wgSessionsInObjectCache = true; # optional
 #$wgMemCachedServers = array("unix:///var/run/memcached/memcached.sock:0");
 
+$wgUseGzip = true;
+$wgDisableAnonTalk = true;
+$wgCheckFileExtensions = true;
+$wgRemoteUploads = true;
+$wgUserHtml = true;
+$wgUseImageResize = true;
+
+// url不强制首字母大写
+$wgCapitalLinks = true;
+// 开启该项功能后，保存页面时，zlib工具将会压缩old revision表中的内容。
+$wgCompressRevisions = true;
+
+// 匿名用户登录时，在页面顶端的用户信息栏内输出其IP地址。
+$wgShowIPinHeader = true;
+$wgUseCategoryMagic = true;// 是否应当启用分类的伪名称空间？
+$wgCategoryMagicGallery = true;// 在分类页面内，以缩略图的方式显示属于该分类的图像，而不是以条目的形式将其罗列出来。
+
+$wgAllowUserCss = true;
+$wgAllowUserJs = true;
+
+$wgHashedUploadDirectory = true;
+
+$wgCacheEpoch = filemtime(__FILE__);
+
+
+$wgAllowDisplayTitle = true;
+$wgRestrictDisplayTitle = false;
+
+$wgDebugDumpSql = true;
+$wgShowSQLErrors = true;
+$wgShowDBErrorBacktrace = true;
+
+$wgShowExceptionDetails = true;
+
+wfLoadExtension('Purge');
+$wgGroupPermissions['*']['purge'] = true;
+
+
 
