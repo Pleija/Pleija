@@ -251,6 +251,7 @@ div#mw-content {
 .mw-body h1.firstHeading {
 	//border-bottom: solid 4px #cc3333;
 	border-bottom: none;
+	margin-bottom: 0;
 }
 .tools-inline li.selected {
 	border-bottom-color: #ffffff;
@@ -262,4 +263,12 @@ div#mw-page-header-links {
 
 .tools-inline li a {
 	zoom: 0.8;
+}
+
+@media screen and (min-width: 851px)
+.tools-inline li.selected {
+	/* border: none; */
+	background: #fffcfc4f;
+	border-bottom: 2px solid #fff;
+	padding-bottom: 2px;
 }
