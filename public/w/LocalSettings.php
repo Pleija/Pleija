@@ -116,6 +116,8 @@ $wgSharedTables[] = "actor";
 
 ## Shared memory settings
 $wgMainCacheType = CACHE_DB;
+
+
 //CACHE_NONE;
 $wgMemCachedServers = [];
 
@@ -232,5 +234,17 @@ $wgActionPaths['view'] = "$root/{$to}/$1";
 $wgArticlePath = $wgActionPaths['view'];
 
 $wgFavicon = "$root/favicon.ico";
+
+## Shared memory settings
+$wgMainCacheType = CACHE_MEMCACHED;
+$wgMemCachedServers = ["127.0.0.1:11211"];
+
+#$wgMainCacheType = CACHE_MEMCACHED;
+$wgParserCacheType = CACHE_MEMCACHED; # optional
+$wgMessageCacheType = CACHE_MEMCACHED; # optional
+$wgSessionCacheType = CACHE_MEMCACHED; # optional
+$wgSessionsInMemcached = true; # optional
+$wgSessionsInObjectCache = true; # optional
+#$wgMemCachedServers = array("unix:///var/run/memcached/memcached.sock:0");
 
 
