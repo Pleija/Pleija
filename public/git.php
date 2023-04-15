@@ -8,7 +8,7 @@ ignore_user_abort(true);
 set_time_limit(0);
 
 echo shell_exec("git fetch --all 2>&1") . PHP_EOL;
-echo shell_exec("git reset --hard origin/master 2>&1") . PHP_EOL;
+echo shell_exec("git reset --hard origin/main 2>&1") . PHP_EOL;
 
 echo "finish" . PHP_EOL;
 
