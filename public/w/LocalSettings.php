@@ -119,7 +119,7 @@ $wgMainCacheType = CACHE_DB;
 
 
 //CACHE_NONE;
-$wgMemCachedServers = [];
+$wgMemCachedServers = ["127.0.0.1:11211"];
 
 ## To enable image uploads, make sure the 'images' directory
 ## is writable, then set this to true:
@@ -243,8 +243,8 @@ $wgFavicon = "$root/favicon.ico";
 //$wgParserCacheType = CACHE_MEMCACHED; # optional
 //$wgMessageCacheType = CACHE_MEMCACHED; # optional
 //$wgSessionCacheType = CACHE_MEMCACHED; # optional
-//$wgSessionsInMemcached = true; # optional
-//$wgSessionsInObjectCache = true; # optional
+$wgSessionsInMemcached = true; # optional
+$wgSessionsInObjectCache = true; # optional
 //#$wgMemCachedServers = array("unix:///var/run/memcached/memcached.sock:0");
 
 $wgParserCacheType = CACHE_DB; # optional
