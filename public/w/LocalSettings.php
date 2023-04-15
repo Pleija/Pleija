@@ -30,10 +30,11 @@ $wgMetaNamespace = "Wiki";
 ## For more information on customizing the URLs
 ## (like /w/index.php/Page_title to /wiki/Page_title) please see:
 ## https://www.mediawiki.org/wiki/Manual:Short_URL
-$wgScriptPath = "/pleija/w";
+$root = !empty($_SERVER) && $_SERVER['SERVER_NAME'] == "localhost" ? "/pleija" :"";
+$wgScriptPath =  "$root/w";
 
 ## The protocol and server name to use in fully-qualified URLs
-$wgServer = "http://localhost";
+$wgServer = (!wfIsCLI() && $_SERVER['SERVER_NAME'] != "localhost" ? "https": "http"). "://".(wfIsCLI() ? "localhost": $_SERVER['SERVER_NAME']);
 
 ## The URL path to static resources (images, scripts, etc.)
 $wgResourceBasePath = $wgScriptPath;
@@ -216,20 +217,20 @@ wfLoadExtension( 'WikiEditor' );
 # End of automatically generated settings.
 # Add more configuration options below.
 
-$wgScriptPath = "/pleija/w";
+$wgScriptPath = "$root/w";
 $to = "wiki";
-$wgArticlePath = "/pleija/{$to}/$1";
+$wgArticlePath = "$root/{$to}/$1";
 $wgUsePathInfo = true;
 
 $actions = array( 'edit', 'watch', 'unwatch', 'delete','revert', 'rollback',
   'protect', 'unprotect', 'markpatrolled', 'render', 'submit', 'history', 'purge', 'info' );
 
 foreach ( $actions as $action ) {
-  $wgActionPaths[$action] = "/pleija/{$to}/$1/$action";
+  $wgActionPaths[$action] = "$root/{$to}/$1/$action";
 }
-$wgActionPaths['view'] = "/pleija/{$to}/$1";
+$wgActionPaths['view'] = "$root/{$to}/$1";
 $wgArticlePath = $wgActionPaths['view'];
 
-$wgFavicon = "/pleija/favicon.ico";
+$wgFavicon = "$root/favicon.ico";
 
 
