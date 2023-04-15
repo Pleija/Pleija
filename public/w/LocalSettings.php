@@ -288,5 +288,7 @@ $wgShowExceptionDetails = true;
 wfLoadExtension('Purge');
 $wgGroupPermissions['*']['purge'] = true;
 
+$wgCompressRevisions=false;
+
 
 
