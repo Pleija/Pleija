@@ -273,7 +273,9 @@ $wgAllowUserJs = true;
 
 $wgHashedUploadDirectory = true;
 
-$wgCacheEpoch = filemtime(__FILE__);
+//$wgCacheEpoch = max( $wgCacheEpoch, gmdate( 'YmdHis', @filemtime( __FILE__ ) ) );
+    //filemtime(__FILE__);
+$wgInvalidateCacheOnLocalSettingsChange = true;
 
 
 $wgAllowDisplayTitle = true;
