@@ -11,8 +11,8 @@
 # https://www.mediawiki.org/wiki/Manual:Configuration_settings
 
 # Protect against web entry
-if ( !defined( 'MEDIAWIKI' ) ) {
-	exit;
+if (!defined('MEDIAWIKI')) {
+    exit;
 }
 
 error_reporting(error_reporting() & ~E_NOTICE & ~E_DEPRECATED & ~E_USER_DEPRECATED);
@@ -30,11 +30,11 @@ $wgMetaNamespace = "Wiki";
 ## For more information on customizing the URLs
 ## (like /w/index.php/Page_title to /wiki/Page_title) please see:
 ## https://www.mediawiki.org/wiki/Manual:Short_URL
-$root = !empty($_SERVER) && @$_SERVER['SERVER_NAME'] == "localhost" ? "/pleija" :"";
-$wgScriptPath =  "$root/w";
+$root = !empty($_SERVER) && @$_SERVER['SERVER_NAME'] == "localhost" ? "/pleija" : "";
+$wgScriptPath = "$root/w";
 
 ## The protocol and server name to use in fully-qualified URLs
-$wgServer = (!wfIsCLI() && $_SERVER['SERVER_NAME'] != "localhost" ? "https": "http"). "://".(wfIsCLI() ? "localhost": $_SERVER['SERVER_NAME']);
+$wgServer = (!wfIsCLI() && $_SERVER['SERVER_NAME'] != "localhost" ? "https" : "http") . "://" . (wfIsCLI() ? "localhost" : $_SERVER['SERVER_NAME']);
 
 ## The URL path to static resources (images, scripts, etc.)
 $wgResourceBasePath = $wgScriptPath;
@@ -44,8 +44,10 @@ $wgResourceBasePath = $wgScriptPath;
 $wgLogos = [
 // 	'1x' => "$wgResourceBasePath/resources/assets/change-your-logo.svg",
 // 	'icon' => "$wgResourceBasePath/resources/assets/change-your-logo.svg",
-	'1x' => "$wgResourceBasePath/resources/assets/logo.jpg",
-	'icon' => "$wgResourceBasePath/resources/assets/logo.jpg",
+    //'1x' => "$wgResourceBasePath/resources/assets/logo.jpg",
+    //'icon' => "$wgResourceBasePath/resources/assets/logo.jpg",
+    '1x' => "$wgResourceBasePath/resources/assets/LovePleija.png",
+    'icon' => "$wgResourceBasePath/resources/assets/LovePleija.png",
 ];
 
 ## UPO means: this is also a user preference option
@@ -68,45 +70,45 @@ $wgDBuser = "";
 $wgDBpassword = "";
 
 # SQLite-specific settings
-$wgSQLiteDataDir = __DIR__."/data";
+$wgSQLiteDataDir = __DIR__ . "/data";
 $wgObjectCaches[CACHE_DB] = [
-	'class' => SqlBagOStuff::class,
-	'loggroup' => 'SQLBagOStuff',
-	'server' => [
-		'type' => 'sqlite',
-		'dbname' => 'wikicache',
-		'tablePrefix' => '',
-		'variables' => [ 'synchronous' => 'NORMAL' ],
-		'dbDirectory' => $wgSQLiteDataDir,
-		'trxMode' => 'IMMEDIATE',
-		'flags' => 0
-	]
+    'class' => SqlBagOStuff::class,
+    'loggroup' => 'SQLBagOStuff',
+    'server' => [
+        'type' => 'sqlite',
+        'dbname' => 'wikicache',
+        'tablePrefix' => '',
+        'variables' => ['synchronous' => 'NORMAL'],
+        'dbDirectory' => $wgSQLiteDataDir,
+        'trxMode' => 'IMMEDIATE',
+        'flags' => 0
+    ]
 ];
 $wgObjectCaches['db-replicated'] = [
-	'factory' => 'Wikimedia\ObjectFactory\ObjectFactory::getObjectFromSpec',
-	'args' => [ [ 'factory' => 'ObjectCache::getInstance', 'args' => [ CACHE_DB ] ] ]
+    'factory' => 'Wikimedia\ObjectFactory\ObjectFactory::getObjectFromSpec',
+    'args' => [['factory' => 'ObjectCache::getInstance', 'args' => [CACHE_DB]]]
 ];
 $wgLocalisationCacheConf['storeServer'] = [
-	'type' => 'sqlite',
-	'dbname' => "{$wgDBname}_l10n_cache",
-	'tablePrefix' => '',
-	'variables' => [ 'synchronous' => 'NORMAL' ],
-	'dbDirectory' => $wgSQLiteDataDir,
-	'trxMode' => 'IMMEDIATE',
-	'flags' => 0
+    'type' => 'sqlite',
+    'dbname' => "{$wgDBname}_l10n_cache",
+    'tablePrefix' => '',
+    'variables' => ['synchronous' => 'NORMAL'],
+    'dbDirectory' => $wgSQLiteDataDir,
+    'trxMode' => 'IMMEDIATE',
+    'flags' => 0
 ];
 $wgJobTypeConf['default'] = [
-	'class' => 'JobQueueDB',
-	'claimTTL' => 3600,
-	'server' => [
-		'type' => 'sqlite',
-		'dbname' => "{$wgDBname}_jobqueue",
-		'tablePrefix' => '',
-		'variables' => [ 'synchronous' => 'NORMAL' ],
-		'dbDirectory' => $wgSQLiteDataDir,
-		'trxMode' => 'IMMEDIATE',
-		'flags' => 0
-	]
+    'class' => 'JobQueueDB',
+    'claimTTL' => 3600,
+    'server' => [
+        'type' => 'sqlite',
+        'dbname' => "{$wgDBname}_jobqueue",
+        'tablePrefix' => '',
+        'variables' => ['synchronous' => 'NORMAL'],
+        'dbDirectory' => $wgSQLiteDataDir,
+        'trxMode' => 'IMMEDIATE',
+        'flags' => 0
+    ]
 ];
 $wgResourceLoaderUseObjectCacheForDeps = true;
 
@@ -116,7 +118,6 @@ $wgSharedTables[] = "actor";
 
 ## Shared memory settings
 $wgMainCacheType = CACHE_DB;
-
 
 //CACHE_NONE;
 $wgMemCachedServers = ["127.0.0.1:11211"];
@@ -177,44 +178,42 @@ $wgDefaultSkin = "timeless";
 
 # Enabled skins.
 # The following skins were automatically enabled:
-wfLoadSkin( 'MinervaNeue' );
-wfLoadSkin( 'MonoBook' );
-wfLoadSkin( 'Timeless' );
-wfLoadSkin( 'Vector' );
-
+wfLoadSkin('MinervaNeue');
+wfLoadSkin('MonoBook');
+wfLoadSkin('Timeless');
+wfLoadSkin('Vector');
 
 # Enabled extensions. Most of the extensions are enabled by adding
 # wfLoadExtension( 'ExtensionName' );
 # to LocalSettings.php. Check specific extension documentation for more details.
 # The following extensions were automatically enabled:
-wfLoadExtension( 'AbuseFilter' );
-wfLoadExtension( 'CategoryTree' );
-wfLoadExtension( 'Cite' );
-wfLoadExtension( 'CiteThisPage' );
-wfLoadExtension( 'CodeEditor' );
-wfLoadExtension( 'ConfirmEdit' );
-wfLoadExtension( 'Gadgets' );
-wfLoadExtension( 'ImageMap' );
-wfLoadExtension( 'InputBox' );
-wfLoadExtension( 'Interwiki' );
-wfLoadExtension( 'Math' );
-wfLoadExtension( 'MultimediaViewer' );
-wfLoadExtension( 'Nuke' );
-wfLoadExtension( 'OATHAuth' );
-wfLoadExtension( 'PageImages' );
-wfLoadExtension( 'ParserFunctions' );
-wfLoadExtension( 'Poem' );
-wfLoadExtension( 'Renameuser' );
-wfLoadExtension( 'ReplaceText' );
-wfLoadExtension( 'Scribunto' );
-wfLoadExtension( 'SecureLinkFixer' );
-wfLoadExtension( 'SpamBlacklist' );
-wfLoadExtension( 'SyntaxHighlight_GeSHi' );
-wfLoadExtension( 'TemplateData' );
-wfLoadExtension( 'TextExtracts' );
-wfLoadExtension( 'TitleBlacklist' );
-wfLoadExtension( 'WikiEditor' );
-
+wfLoadExtension('AbuseFilter');
+wfLoadExtension('CategoryTree');
+wfLoadExtension('Cite');
+wfLoadExtension('CiteThisPage');
+wfLoadExtension('CodeEditor');
+wfLoadExtension('ConfirmEdit');
+wfLoadExtension('Gadgets');
+wfLoadExtension('ImageMap');
+wfLoadExtension('InputBox');
+wfLoadExtension('Interwiki');
+wfLoadExtension('Math');
+wfLoadExtension('MultimediaViewer');
+wfLoadExtension('Nuke');
+wfLoadExtension('OATHAuth');
+wfLoadExtension('PageImages');
+wfLoadExtension('ParserFunctions');
+wfLoadExtension('Poem');
+wfLoadExtension('Renameuser');
+wfLoadExtension('ReplaceText');
+wfLoadExtension('Scribunto');
+wfLoadExtension('SecureLinkFixer');
+wfLoadExtension('SpamBlacklist');
+wfLoadExtension('SyntaxHighlight_GeSHi');
+wfLoadExtension('TemplateData');
+wfLoadExtension('TextExtracts');
+wfLoadExtension('TitleBlacklist');
+wfLoadExtension('WikiEditor');
 
 # End of automatically generated settings.
 # Add more configuration options below.
@@ -224,11 +223,11 @@ $to = "Pleija";
 $wgArticlePath = "$root/{$to}/$1";
 $wgUsePathInfo = true;
 
-$actions = array( 'edit', 'watch', 'unwatch', 'delete','revert', 'rollback',
-  'protect', 'unprotect', 'markpatrolled', 'render', 'submit', 'history', 'purge', 'info' );
+$actions = array('edit', 'watch', 'unwatch', 'delete', 'revert', 'rollback',
+    'protect', 'unprotect', 'markpatrolled', 'render', 'submit', 'history', 'purge', 'info');
 
-foreach ( $actions as $action ) {
-  $wgActionPaths[$action] = "$root/{$to}/$1/$action";
+foreach ($actions as $action) {
+    $wgActionPaths[$action] = "$root/{$to}/$1/$action";
 }
 $wgActionPaths['view'] = "$root/{$to}/$1";
 $wgArticlePath = $wgActionPaths['view'];
@@ -274,9 +273,8 @@ $wgAllowUserJs = true;
 $wgHashedUploadDirectory = true;
 
 //$wgCacheEpoch = max( $wgCacheEpoch, gmdate( 'YmdHis', @filemtime( __FILE__ ) ) );
-    //filemtime(__FILE__);
+//filemtime(__FILE__);
 $wgInvalidateCacheOnLocalSettingsChange = true;
-
 
 $wgAllowDisplayTitle = true;
 $wgRestrictDisplayTitle = false;
@@ -290,7 +288,7 @@ $wgShowExceptionDetails = true;
 wfLoadExtension('Purge');
 $wgGroupPermissions['*']['purge'] = true;
 
-$wgCompressRevisions=false;
+$wgCompressRevisions = false;
 
 
 
