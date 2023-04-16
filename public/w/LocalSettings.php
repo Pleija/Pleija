@@ -46,8 +46,8 @@ $wgLogos = [
 // 	'icon' => "$wgResourceBasePath/resources/assets/change-your-logo.svg",
     //'1x' => "$wgResourceBasePath/resources/assets/logo.jpg",
     //'icon' => "$wgResourceBasePath/resources/assets/logo.jpg",
-    '1x' => "$wgResourceBasePath/resources/assets/LovePleija.png",
-    'icon' => "$wgResourceBasePath/resources/assets/LovePleija.png",
+    '1x' => "$wgResourceBasePath/resources/assets/Love2.png",
+    'icon' => "$wgResourceBasePath/resources/assets/Love2.png",
 ];
 
 ## UPO means: this is also a user preference option
