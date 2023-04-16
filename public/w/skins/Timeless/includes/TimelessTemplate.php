@@ -710,7 +710,7 @@ class TimelessTemplate extends BaseTemplate {
 
 		// Labels
 		if ( $user->isRegistered() ) {
-			$dropdownHeader = $userName;
+			$dropdownHeader = $user->getRealName() /*$userName*/;
 			$headerMsg = [ 'timeless-loggedinas', /*$userName*/$user->getRealName() ];
 		} else {
 			$dropdownHeader = $this->getMsg( 'timeless-anonymous' )->text();
