@@ -680,7 +680,7 @@ class TimelessTemplate extends BaseTemplate {
 		$user = $this->getSkin()->getUser();
 		$personalTools = $this->getPersonalTools();
 		// Preserve standard username label to allow customisation (T215822)
-		$userName = $personalTools['userpage']['links'][0]['text'] ?? $user->getRealName();
+		$userName = $personalTools['userpage']['links'][0]['text'] ?? $user->getName();
 
 		$extraTools = [];
 
