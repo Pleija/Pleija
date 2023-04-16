@@ -710,6 +710,7 @@ class TimelessTemplate extends BaseTemplate {
 
 		// Labels
 		if ( $user->isRegistered() ) {
+            //todo: pleija
 			$dropdownHeader = $user->getRealName() /*$userName*/;
 			$headerMsg = [ 'timeless-loggedinas', $userName ];
 		} else {
