@@ -30,11 +30,11 @@ $wgMetaNamespace = "Wiki";
 ## For more information on customizing the URLs
 ## (like /w/index.php/Page_title to /wiki/Page_title) please see:
 ## https://www.mediawiki.org/wiki/Manual:Short_URL
-$root = !empty($_SERVER) && @$_SERVER['SERVER_NAME'] == "localhost" ? "/pleija" : "";
+$root = PHP_OS == "Darwin" ? "/pleija" : "";
 $wgScriptPath = "$root/w";
 
 ## The protocol and server name to use in fully-qualified URLs
-$wgServer = (!wfIsCLI() && $_SERVER['SERVER_NAME'] != "localhost" ? "https" : "http") . "://" . (wfIsCLI() ? "localhost" : $_SERVER['SERVER_NAME']);
+$wgServer = (PHP_OS != "Darwin" && !wfIsCLI() ? "https" : "http") . "://" . ( wfIsCLI()  ? "localhost" : $_SERVER['SERVER_NAME']);
 
 ## The URL path to static resources (images, scripts, etc.)
 $wgResourceBasePath = $wgScriptPath;
@@ -118,7 +118,7 @@ $wgDBtype = "mysql";
 $wgDBserver = "localhost";
 $wgDBname = "wiki";
 $wgDBuser = "root";
-$wgDBpassword = "root";
+$wgDBpassword = PHP_OS == "Darwin" ? "root" : "Pleija7758520+";
 
 # MySQL specific settings
 $wgDBprefix = "wiki_";
