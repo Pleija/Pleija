@@ -62,54 +62,70 @@ $wgEnotifUserTalk = false; # UPO
 $wgEnotifWatchlist = false; # UPO
 $wgEmailAuthentication = true;
 
-## Database settings
-$wgDBtype = "sqlite";
-$wgDBserver = "";
-$wgDBname = "wiki";
-$wgDBuser = "";
-$wgDBpassword = "";
+if(false){
+    ## Database settings
+    $wgDBtype = "sqlite";
+    $wgDBserver = "";
+    $wgDBname = "wiki";
+    $wgDBuser = "";
+    $wgDBpassword = "";
 
 # SQLite-specific settings
-$wgSQLiteDataDir = __DIR__ . "/data";
-$wgObjectCaches[CACHE_DB] = [
-    'class' => SqlBagOStuff::class,
-    'loggroup' => 'SQLBagOStuff',
-    'server' => [
+    $wgSQLiteDataDir = __DIR__ . "/data";
+    $wgObjectCaches[CACHE_DB] = [
+        'class' => SqlBagOStuff::class,
+        'loggroup' => 'SQLBagOStuff',
+        'server' => [
+            'type' => 'sqlite',
+            'dbname' => 'wikicache',
+            'tablePrefix' => '',
+            'variables' => ['synchronous' => 'NORMAL'],
+            'dbDirectory' => $wgSQLiteDataDir,
+            'trxMode' => 'IMMEDIATE',
+            'flags' => 0
+        ]
+    ];
+    $wgObjectCaches['db-replicated'] = [
+        'factory' => 'Wikimedia\ObjectFactory\ObjectFactory::getObjectFromSpec',
+        'args' => [['factory' => 'ObjectCache::getInstance', 'args' => [CACHE_DB]]]
+    ];
+    $wgLocalisationCacheConf['storeServer'] = [
         'type' => 'sqlite',
-        'dbname' => 'wikicache',
+        'dbname' => "{$wgDBname}_l10n_cache",
         'tablePrefix' => '',
         'variables' => ['synchronous' => 'NORMAL'],
         'dbDirectory' => $wgSQLiteDataDir,
         'trxMode' => 'IMMEDIATE',
         'flags' => 0
-    ]
-];
-$wgObjectCaches['db-replicated'] = [
-    'factory' => 'Wikimedia\ObjectFactory\ObjectFactory::getObjectFromSpec',
-    'args' => [['factory' => 'ObjectCache::getInstance', 'args' => [CACHE_DB]]]
-];
-$wgLocalisationCacheConf['storeServer'] = [
-    'type' => 'sqlite',
-    'dbname' => "{$wgDBname}_l10n_cache",
-    'tablePrefix' => '',
-    'variables' => ['synchronous' => 'NORMAL'],
-    'dbDirectory' => $wgSQLiteDataDir,
-    'trxMode' => 'IMMEDIATE',
-    'flags' => 0
-];
-$wgJobTypeConf['default'] = [
-    'class' => 'JobQueueDB',
-    'claimTTL' => 3600,
-    'server' => [
-        'type' => 'sqlite',
-        'dbname' => "{$wgDBname}_jobqueue",
-        'tablePrefix' => '',
-        'variables' => ['synchronous' => 'NORMAL'],
-        'dbDirectory' => $wgSQLiteDataDir,
-        'trxMode' => 'IMMEDIATE',
-        'flags' => 0
-    ]
-];
+    ];
+    $wgJobTypeConf['default'] = [
+        'class' => 'JobQueueDB',
+        'claimTTL' => 3600,
+        'server' => [
+            'type' => 'sqlite',
+            'dbname' => "{$wgDBname}_jobqueue",
+            'tablePrefix' => '',
+            'variables' => ['synchronous' => 'NORMAL'],
+            'dbDirectory' => $wgSQLiteDataDir,
+            'trxMode' => 'IMMEDIATE',
+            'flags' => 0
+        ]
+    ];
+}
+
+## Database settings
+$wgDBtype = "mysql";
+$wgDBserver = "localhost";
+$wgDBname = "wiki";
+$wgDBuser = "root";
+$wgDBpassword = "root";
+
+# MySQL specific settings
+$wgDBprefix = "wiki_";
+
+# MySQL table options to use during installation or update
+$wgDBTableOptions = "ENGINE=InnoDB, DEFAULT CHARSET=binary";
+
 $wgResourceLoaderUseObjectCacheForDeps = true;
 
 # Shared database table
@@ -117,7 +133,7 @@ $wgResourceLoaderUseObjectCacheForDeps = true;
 $wgSharedTables[] = "actor";
 
 ## Shared memory settings
-$wgMainCacheType = CACHE_DB;
+$wgMainCacheType = CACHE_MEMCACHED;//CACHE_DB;
 
 //CACHE_NONE;
 $wgMemCachedServers = ["127.0.0.1:11211"];
@@ -236,19 +252,19 @@ $wgFavicon = "$root/favicon.ico";
 
 //## Shared memory settings
 //$wgMainCacheType = CACHE_MEMCACHED;
-//$wgMemCachedServers = ["127.0.0.1:11211"];
+$wgMemCachedServers = ["127.0.0.1:11211"];
 //
-//#$wgMainCacheType = CACHE_MEMCACHED;
-//$wgParserCacheType = CACHE_MEMCACHED; # optional
-//$wgMessageCacheType = CACHE_MEMCACHED; # optional
-//$wgSessionCacheType = CACHE_MEMCACHED; # optional
+$wgMainCacheType = CACHE_MEMCACHED;
+$wgParserCacheType = CACHE_MEMCACHED; # optional
+$wgMessageCacheType = CACHE_MEMCACHED; # optional
+$wgSessionCacheType = CACHE_MEMCACHED; # optional
 $wgSessionsInMemcached = true; # optional
 $wgSessionsInObjectCache = true; # optional
 //#$wgMemCachedServers = array("unix:///var/run/memcached/memcached.sock:0");
 
-$wgParserCacheType = CACHE_DB; # optional
-$wgMessageCacheType = CACHE_DB; # optional
-$wgSessionCacheType = CACHE_DB; # optional
+//$wgParserCacheType = CACHE_DB; # optional
+//$wgMessageCacheType = CACHE_DB; # optional
+//$wgSessionCacheType = CACHE_DB; # optional
 
 $wgUseGzip = true;
 $wgDisableAnonTalk = true;
