@@ -9,3 +9,4 @@
 - 
 - laravel admin username: admin pwd: Hash::make('Pleija77**+')
 - wiki username: Admin pwd: Pleija77**+
+- mysql root:Pleija7758520+
