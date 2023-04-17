@@ -1,2 +1,2 @@
 wikicache.sqlite
-*.sqlite
+# *.sqlite
