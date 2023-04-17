@@ -22,8 +22,8 @@ empty($IP) && $IP = __DIR__;
 ## Uncomment this to disable output compression
 # $wgDisableOutputCompression = true;
 
-$wgSitename = " Pleija ";
-$wgMetaNamespace = "Wiki";
+$wgSitename = " Pleija & Mo ";
+$wgMetaNamespace = "Article";
 
 ## The URL base path to the directory containing the wiki;
 ## defaults for all runtime URL paths are based off of this.
@@ -62,7 +62,7 @@ $wgEnotifUserTalk = false; # UPO
 $wgEnotifWatchlist = false; # UPO
 $wgEmailAuthentication = true;
 
-if(false){
+if(PHP_OS == "Darwin"){
     ## Database settings
     $wgDBtype = "sqlite";
     $wgDBserver = "";
@@ -111,20 +111,22 @@ if(false){
             'flags' => 0
         ]
     ];
-}
-
-## Database settings
-$wgDBtype = "mysql";
-$wgDBserver = "localhost";
-$wgDBname = "wiki";
-$wgDBuser = "root";
-$wgDBpassword = PHP_OS == "Darwin" ? "root" : "Pleija7758520+";
+} else {
+    ## Database settings
+    $wgDBtype = "mysql";
+    $wgDBserver = "localhost";
+    $wgDBname = "wiki";
+    $wgDBuser = "root";
+    $wgDBpassword = PHP_OS == "Darwin" ? "root" : "Pleija7758520+";
 
 # MySQL specific settings
-$wgDBprefix = "wiki_";
+    $wgDBprefix = "wiki_";
 
 # MySQL table options to use during installation or update
-$wgDBTableOptions = "ENGINE=InnoDB, DEFAULT CHARSET=binary";
+    $wgDBTableOptions = "ENGINE=InnoDB, DEFAULT CHARSET=binary";
+}
+
+
 
 $wgResourceLoaderUseObjectCacheForDeps = true;
 
