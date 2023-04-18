@@ -22,7 +22,7 @@ empty($IP) && $IP = __DIR__;
 ## Uncomment this to disable output compression
 # $wgDisableOutputCompression = true;
 
-$wgSitename = " Pleija & Mo ";
+$wgSitename = " Pleija ";
 $wgMetaNamespace = "Article";
 
 ## The URL base path to the directory containing the wiki;
