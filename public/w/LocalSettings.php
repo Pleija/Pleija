@@ -34,7 +34,7 @@ $root = PHP_OS == "Darwin" ? "/pleija" : "";
 $wgScriptPath = "$root/w";
 
 ## The protocol and server name to use in fully-qualified URLs
-$wgServer = (PHP_OS != "Darwin" && !wfIsCLI() ? "https" : "http") . "://" . ( wfIsCLI()  ? "localhost" : $_SERVER['SERVER_NAME']);
+$wgServer = (PHP_OS != "Darwin" && !wfIsCLI() ? "https" : "http") . "://" . (wfIsCLI() ? "localhost" : $_SERVER['SERVER_NAME']);
 
 ## The URL path to static resources (images, scripts, etc.)
 $wgResourceBasePath = $wgScriptPath;
@@ -62,7 +62,7 @@ $wgEnotifUserTalk = false; # UPO
 $wgEnotifWatchlist = false; # UPO
 $wgEmailAuthentication = true;
 
-if(PHP_OS == "Darwin"){
+if (PHP_OS == "Darwin") {
     ## Database settings
     $wgDBtype = "sqlite";
     $wgDBserver = "";
@@ -125,8 +125,6 @@ if(PHP_OS == "Darwin"){
 # MySQL table options to use during installation or update
     $wgDBTableOptions = "ENGINE=InnoDB, DEFAULT CHARSET=binary";
 }
-
-
 
 $wgResourceLoaderUseObjectCacheForDeps = true;
 
@@ -308,5 +306,9 @@ $wgGroupPermissions['*']['purge'] = true;
 
 $wgCompressRevisions = false;
 
+$wgAllowExternalImages = true;
+$wgAllowCopyUploads = true;
+$wgFileExtensions = array('png', 'gif', 'jpg', 'jpeg', 'doc', 'ppt', 'pdf');
+$wgVerifyMimeType = false;
 
 
