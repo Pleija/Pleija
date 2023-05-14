@@ -308,7 +308,7 @@ $wgCompressRevisions = false;
 
 $wgAllowExternalImages = true;
 $wgAllowCopyUploads = true;
-$wgFileExtensions = array('png', 'gif', 'jpg', 'jpeg', 'doc', 'ppt', 'pdf');
+//$wgFileExtensions = array('png', 'gif', 'jpg', 'jpeg', 'doc', 'ppt', 'pdf');
 $wgVerifyMimeType = false;
 
 
