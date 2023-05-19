@@ -230,6 +230,7 @@ wfLoadExtension('TemplateData');
 wfLoadExtension('TextExtracts');
 wfLoadExtension('TitleBlacklist');
 wfLoadExtension('WikiEditor');
+wfLoadExtension( 'EmbedVideo' );
 
 # End of automatically generated settings.
 # Add more configuration options below.
@@ -310,5 +311,7 @@ $wgAllowExternalImages = true;
 $wgAllowCopyUploads = true;
 //$wgFileExtensions = array('png', 'gif', 'jpg', 'jpeg', 'doc', 'ppt', 'pdf');
 $wgVerifyMimeType = false;
+
+$wgMaxUploadSize = 1024*1024*200; //200mb
 
 
