@@ -271,8 +271,11 @@ $wgUseGzip = true;
 $wgDisableAnonTalk = true;
 $wgCheckFileExtensions = true;
 $wgRemoteUploads = true;
-$wgUserHtml = true;
+$wgUserHtml = false;
 $wgUseImageResize = true;
+$wgAllowExternalImages = true;
+$wgAllowImageTag=true;
+
 
 // url不强制首字母大写
 $wgCapitalLinks = true;
@@ -305,13 +308,12 @@ $wgShowExceptionDetails = true;
 wfLoadExtension('Purge');
 $wgGroupPermissions['*']['purge'] = true;
 
-$wgCompressRevisions = false;
+$wgCompressRevisions = true;
 
-$wgAllowExternalImages = true;
 $wgAllowCopyUploads = true;
 //$wgFileExtensions = array('png', 'gif', 'jpg', 'jpeg', 'doc', 'ppt', 'pdf');
-$wgVerifyMimeType = false;
+$wgVerifyMimeType = true;
 
-$wgMaxUploadSize = 1024*1024*200; //200mb
+$wgMaxUploadSize = 1024*1024*2000; //200mb
 
 
